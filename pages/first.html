@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Основны работы со статичным сайтом блогом | Personal Public Blog </title>
+  <meta name="author" content="Ilya Bezrukov">
+
+
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="/favicon.png" rel="icon">
+  <link href="/theme/css/main.css" media="screen, projection"
+        rel="stylesheet" type="text/css">
+  <script src="/theme/js/modernizr-2.0.js"></script>
+  <script src="/theme/js/ender.js"></script>
+  <script src="/theme/js/octopress.js" type="text/javascript"></script>
+
+  <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+</head>
+
+<body>
+  <header role="banner"><hgroup>
+  <h1><a href="/">Personal Public Blog</a></h1>
+</hgroup></header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+</ul>
+
+
+
+<ul class="main-navigation">
+      <li><a href="/pages/first.html">Основны работы со статичным сайтом блогом</a></li>
+      <li><a href="/pages/inna_test.html">Проба пера</a></li>
+</ul></nav>
+  <div id="main">
+    <div id="content">
+<div>
+  <article role="article">
+    <header>
+      <h1 class="entry-title">Основны работы со статичным сайтом блогом</h1>
+    </header>
+    <h1>Главный заголовок</h1>
+<h2>Первоначальная установка и настройка</h2>
+<p>Для начала нам потребуется создать виртуальное окружение для нашего блог/сайти, точнее не для него а для генератора статических скайтов "pelican"</p>
+<div class="highlight"><pre>virtualenv ~/virtualenv/pelican -p /usr/bin/python2.7 --no-site-packages
+</pre></div>
+
+
+<p>Устанавливаем pelicat, markdown</p>
+<div class="highlight"><pre>pip install pelican markdown
+</pre></div>
+
+
+<p>Инициализируем наш проект</p>
+<div class="highlight"><pre>pelican-quickstart
+</pre></div>
+
+
+<p>Отвечаем на вопросы, тем самым создав директорию с нашим проектом и набором скриптов pelican'a</p>
+<p>Далее создадим alias для удобного быстрого старта работы с блогом ( в .bashrc )</p>
+<div class="highlight"><pre><span class="nb">alias </span><span class="nv">Blog</span><span class="o">=</span><span class="s2">&quot;source /home/bezrukov/virtualenv/pelican/bin/activate;\</span>
+<span class="s2">            cd /home/bezrukov/Desktop/${NAME_PROGECT}/&quot;</span>
+</pre></div>
+
+
+<p>В директории проекта мы видим примерно следующий набор файлов</p>
+<div class="highlight"><pre><span class="o">(</span>pelican<span class="o">)</span>bezrukov@demo:~/Desktop/testblog<span class="nv">$ </span>tree -d
+.
+├── cache
+├── content                 <span class="c"># Диреткория исходных текстовых фалов, формата Markdown</span>
+└── output                  <span class="c"># сгенерированные страницы ( html, css, js, jpg....)</span>
+    ├── author
+    ├── category
+    ├── feeds
+    ├── tag
+    └── theme
+        ├── css
+        ├── images
+        │   └── icons
+        └── js
+
+12 directories
+</pre></div>
+
+
+<h2>Порядок работы с pelican</h2>
+<h3>Написание контента</h3>
+<p>Пожалуй самая простая вещь, переходим в директорию проекта и далее в поддиректорию content.
+Для создания новой статьи просто создаем новый файл с расширением .md.
+И в шапку только что созданного файла добавляем</p>
+<div class="highlight"><pre>Title: <span class="cp">${</span><span class="err">Заголовок</span> <span class="err">статьи</span><span class="o">/</span><span class="err">поста</span><span class="cp">}</span>
+Date: <span class="cp">${</span><span class="err">Текущая</span> <span class="err">дата</span> <span class="err">и</span> <span class="err">время</span><span class="cp">}</span>
+Category: <span class="cp">${</span><span class="err">Категория</span> <span class="err">поста</span><span class="cp">}</span>
+Tags: Теги характеризующие данный пост
+Slug: URL&#39;ий адресс поста 
+Author: Автор
+Summary: Некоторая описательная часть поста
+</pre></div>
+
+
+<p><em>В дальнейшем я постараюсь скоратить количество обязательных полей и автоматизировать процесс создания нового файла.</em></p>
+<p>Текст пишется в формате Markdown
+ссылка на синтаксис будет тут;)</p>
+<h3>Работа с изображениями</h3>
+<p>для публикации изображений кладем файл картинки в папку .content/images</p>
+<p>и пишим следующее</p>
+<div class="highlight"><pre><span class="err">\</span><span class="o">!</span><span class="p">[</span><span class="n">Alt</span> <span class="n">Text</span><span class="p">]</span><span class="err">\</span><span class="p">({</span><span class="n">filename</span><span class="p">}</span><span class="o">/</span><span class="n">images</span><span class="o">/</span><span class="n">darksidemoon</span><span class="p">.</span><span class="n">jpeg</span><span class="p">)</span>
+</pre></div>
+
+
+<p><img alt="Alt Text" src="/images/darksidemoon.jpeg" /></p>
+<h3>Генерация html страниц</h3>
+<p>убедившись что находитесь в корневом каталоге проекта и virtualenv активирован,
+для чего можно вызвать недавно созданный alias - Blog, выполняем команду:
+    :::Bash shell scripts
+    make html</p>
+<p>все необходимые файлы будут сгенерированы в директории output</p>
+<h3>Вопрос публикации оставим на потом %)</h3>
+<ul>
+<li><a href="inna_test.html">a link relative to current file</a></li>
+</ul>
+  </article>
+</div>
+<aside class="sidebar">
+  <section>
+    <h1>Recent Posts</h1>
+    <ul id="recent_posts">
+    </ul>
+  </section>
+ 
+
+  <section>
+  <h1>Tags</h1>
+  </section>
+
+
+    <section>
+        <h1>Social</h1>
+        <ul>
+            <li><a href="#" target="_blank">You can add links in your config file</a></li>
+            <li><a href="#" target="_blank">Another social link</a></li>
+        </ul>
+    </section>
+    <section>
+        <h1>Blogroll</h1>
+        <ul>
+            <li><a href="http://getpelican.com/" target="_blank">Pelican</a></li>
+            <li><a href="http://python.org/" target="_blank">Python.org</a></li>
+            <li><a href="http://jinja.pocoo.org/" target="_blank">Jinja2</a></li>
+            <li><a href="#" target="_blank">You can modify those links in your config file</a></li>
+        </ul>
+    </section>
+
+</aside>    </div>
+  </div>
+  <footer role="contentinfo"><p>
+    Copyright &copy;  2014  - Ilya Bezrukov -
+  <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
+</p></footer>
+</body>
+</html>
