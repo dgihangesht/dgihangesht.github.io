@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Personal Public Blog</title><link href="http://dgihangesht.github.io/" rel="alternate"></link><link href="http://dgihangesht.github.io/feeds/innab.atom.xml" rel="self"></link><id>http://dgihangesht.github.io/</id><updated>2014-11-02T20:17:50+04:00</updated><entry><title>Проба пера</title><link href="http://dgihangesht.github.io/articles/inna_test/" rel="alternate"></link><updated>2014-11-02T20:17:50+04:00</updated><author><name>InnaB</name></author><id>tag:dgihangesht.github.io,2014-11-02:articles/inna_test/</id><summary type="html">&lt;h1&gt;про майю&lt;/h1&gt;
+&lt;p&gt;Сегодня мы побывали на страусинной ферме. Майя вполне себе впечатлилась птицами. Там их было довольно много:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;фазаны&lt;/li&gt;
+&lt;li&gt;индюки&lt;/li&gt;
+&lt;li&gt;всякая дичь&lt;/li&gt;
+&lt;li&gt;куры&lt;/li&gt;
+&lt;li&gt;павлины&lt;/li&gt;
+&lt;li&gt;и, конечно, страусы&lt;/li&gt;
+&lt;/ul&gt;</summary><category term="Maya"></category><category term="Blog"></category></entry></feed>
